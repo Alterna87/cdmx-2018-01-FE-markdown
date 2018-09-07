@@ -3,6 +3,7 @@ const marked = require('marked');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const resolve = require('path').resolve;
+const fetch = require("node-fetch");
 
 
 const validateRoute = (path) => {
@@ -32,14 +33,29 @@ return new Promise((resolve, reject) => {
       }
       arrayData.push(dataLinks);
       }
+      if (options.validate) {
+
+      console.log(validateLink(arrayData));
+    } else {
 
       console.log(arrayData);
+    }
   }
 });
 };
 
-const validateLink =(path, options)=> {
-return console.log('argv: validate');
+const validateLink =(arrayData)=> {
+    arrayData.forEach(link => {
+      fetch(link.href)
+        .then(res => {
+          if (res.status === 404) {
+            link.status = 'Fail 404';
+          } else {
+            link.status = 'Ok 200';
+          }
+        });
+    });
+
 }
 
 
