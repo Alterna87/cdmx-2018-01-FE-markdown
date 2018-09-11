@@ -21,10 +21,8 @@
   "homepage": "https://github.com/Alterna87/cdmx-2018-01-FE-markdown#readme",
   "dependencies": {
     "jsdom": "^12.0.0",
-<<<<<<< HEAD
     "marked": "^0.5.0",
-=======
->>>>>>> 3705cab6345a6c5aff9873d0cace109d075acef2
+    "node-fetch": "^2.2.0",
     "yargs": "^12.0.1"
   }
 }

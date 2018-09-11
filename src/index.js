@@ -38,19 +38,20 @@ let commands = yargs
   .argv;
 
 //"jsdom": "^12.0.0"
-console.log(commands.validate);
+// console.log(commands.validate);
 
 
 let path = commands._[0];
 
 validateRoute(path);
-console.log(path);
+//console.log(path);
 
 
 //'./textprob.md';
 
 if (commands.validate) {
-  console.log('argv: validate');
+  mdLink(path);
+
 } else if (commands.stats) {
   console.log('argv: stats');
 }

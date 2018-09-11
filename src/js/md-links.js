@@ -3,6 +3,7 @@ const marked = require('marked');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const resolve = require('path').resolve;
+const fetch = require("node-fetch");
 
 
 const validateRoute = (path) => {
@@ -32,14 +33,22 @@ return new Promise((resolve, reject) => {
       }
       arrayData.push(dataLinks);
       }
-
-      console.log(arrayData);
+      //
+      // console.log(arrayData);
+      validateLink(arrayData);
   }
 });
 };
 
-const validateLink =(path, options)=> {
-return console.log('argv: validate');
+const validateLink =(arrayData,err)=> {
+for (var i = 0; i < arrayData.length; i++) {
+fetch(`${arrayData[i].href}`)
+.then(res => {
+  console.log(res.status)
+
+
+});
+};
 }
 
 
