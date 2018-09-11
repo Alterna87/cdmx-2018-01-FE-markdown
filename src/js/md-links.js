@@ -6,7 +6,7 @@ const resolve = require('path').resolve;
 const fetch = require("node-fetch");
 
 
-const validateRoute = (path) => {
+const validateRoute = (path, option = false) => {
 return path = resolve(path);
 
 }
@@ -33,9 +33,15 @@ return new Promise((resolve, reject) => {
       }
       arrayData.push(dataLinks);
       }
+
+      if (options.validate) {
+        console.log(validateLink(arrayData));
+      } else {
+        console.log(arrayData);
+      }
       //
       // console.log(arrayData);
-      validateLink(arrayData);
+
   }
 });
 };
