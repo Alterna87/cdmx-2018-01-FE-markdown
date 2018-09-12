@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 const { mdLink, validateRoute } = require('./js/md-links');
 const yargs = require('yargs');
 
@@ -44,9 +43,6 @@ let commands = yargs
 let path = commands._[0];
 
 validateRoute(path);
-//console.log(path);
-
-
 //'./textprob.md';
 
 if (commands.validate) {
@@ -59,7 +55,7 @@ if (commands.validate) {
 }
 
 else {
-  mdLink(path)
+  mdLink(path, commands)
   .then(archivo =>  console.log(archivo))
   .catch(console.error());
 }
