@@ -5,10 +5,8 @@ const { JSDOM } = jsdom;
 const resolve = require('path').resolve;
 const fetch = require("node-fetch");
 
-
 const validateRoute = (path, option = false) => {
 return path = resolve(path);
-
 }
 
 const mdLink = (path, options, err) => {
@@ -35,7 +33,9 @@ return new Promise((resolve, reject) => {
       }
 
       if (options.validate) {
+
         console.log(validateLink(arrayData));
+
       } else {
         console.log(arrayData);
       }
@@ -46,15 +46,29 @@ return new Promise((resolve, reject) => {
 });
 };
 
-const validateLink =(arrayData,err)=> {
-for (var i = 0; i < arrayData.length; i++) {
-fetch(`${arrayData[i].href}`)
+// Funcion que que retorna : => [{ href, text, file, status, ok }]
+const validateLink =(arrayData) => {
+  let linksStatus = arrayData.map(obj => {
+       return Object.defineProperty(obj, 'status', {
+         value: '',
+         writable: true,
+         enumerable: true,
+         configurable: true
+       });
+});
+linksStatus.forEach(link => {
+fetch(link.href)
 .then(res => {
-  console.log(res.status)
+  if (res.status === 200) {
+    link.status = res.statusText;
+    console.log(link);
+  }
+
+});
 
 
 });
-};
+
 }
 
 
