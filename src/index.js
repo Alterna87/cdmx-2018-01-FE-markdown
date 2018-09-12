@@ -50,15 +50,16 @@ validateRoute(path);
 //'./textprob.md';
 
 if (commands.validate) {
-  mdLink(path, commands);
+  mdLink(path, commands)
+  .then(archivo =>  console.log(archivo))
+  .catch(console.error());
 
 } else if (commands.stats) {
   console.log('argv: stats');
 }
 
 else {
-
-  mdLink(path, commands)
+  mdLink(path)
   .then(archivo =>  console.log(archivo))
   .catch(console.error());
 }

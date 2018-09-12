@@ -33,15 +33,11 @@ return new Promise((resolve, reject) => {
       }
 
       if (options.validate) {
-
-        console.log(validateLink(arrayData));
+console.log(validateLink(arrayData));
 
       } else {
         console.log(arrayData);
       }
-      //
-      // console.log(arrayData);
-
   }
 });
 };
@@ -61,9 +57,10 @@ fetch(link.href)
 .then(res => {
   if (res.status === 200) {
     link.status = res.statusText;
-    console.log(link);
+
   }
 
+console.log(link);
 });
 
 
