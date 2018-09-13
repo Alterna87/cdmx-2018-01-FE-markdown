@@ -41,7 +41,6 @@ console.log(validateLink(arrayData));
   }
 });
 };
-
 // Funcion que que retorna : => [{ href, text, file, status, ok }]
 const validateLink =(arrayData) => {
   let linksStatus = arrayData.map(obj => {
@@ -59,17 +58,12 @@ fetch(link.href)
     link.status = res.statusText;
 
   }
-
 console.log(link);
 });
-
-
 });
 
 }
-
-
-module.exports = {
+Smodule.exports = {
   mdLink,
   validateRoute
 }

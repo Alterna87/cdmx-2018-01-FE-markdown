@@ -1,14 +1,12 @@
 #!/usr/bin/env node
-
 const { mdLink, validateRoute } = require('./js/md-links');
 const yargs = require('yargs');
-
 let commands = yargs
   .command({
     command: '<path>',
     strict: 'true'
   })
-  .demandCommand(1, 1, 'ERROR: You need a path to run mdLinks', 'ERROR: Write the path without spaces')
+  .demandCommand(1, 1, 'ERROR: Ingresa el comando mdLinks', 'ERROR: Write the path without spaces')
   .options({
     '_': {
       type: 'string',
@@ -36,12 +34,8 @@ let commands = yargs
   })
   .argv;
 
-//"jsdom": "^12.0.0"
 // console.log(commands.validate);
-
-
 let path = commands._[0];
-
 validateRoute(path);
 //'./textprob.md';
 
@@ -59,8 +53,3 @@ else {
   .then(archivo =>  console.log(archivo))
   .catch(console.error());
 }
-//
-// // Primera función
-// mdLink(path)
-// .then(archivo =>  console.log(archivo))
-// .catch(console.error());
